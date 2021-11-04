@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       // home: const CircularParticleScreen(),
-      // home: NavigationDrawerTest(),
+      home: const NavigationDrawerTest(),
       // home: const HttpRequestPage(),
-      home: const AutoGenerateUserImage(),
+      // home: const AutoGenerateUserImage(),
     );
   }
 }
@@ -53,24 +53,23 @@ class _AutoGenerateUserImageState extends State<AutoGenerateUserImage> {
         child: Column(
           children: [
             Center(
-                child: Avatar(
-                  name: name,
-                  onTap: (){
-                      setState(() {
-                        name = "James Franco";
-                      });
-                  },
-                  value: name,
-                ),
+              child: Avatar(
+                name: name,
+                onTap: () {
+                  setState(() {
+                    name = "James Franco";
+                  });
+                },
+                value: name,
+              ),
             ),
             ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   setState(() {
                     name = "Seth Rogen";
                   });
                 },
-                child: const Text("Change Name")
-            ),
+                child: const Text("Change Name")),
           ],
         ),
       ),
@@ -122,10 +121,37 @@ class _NavigationDrawerTestState extends State<NavigationDrawerTest> {
       appBar: AppBar(
         title: const Text("Test Side Navigation Drawer"),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children:  [
+            const DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: UserAccountsDrawerHeader(
+                accountName: Text("Account Name"),
+                accountEmail: Text("Email"),
+                currentAccountPicture: CircleAvatar(
+                  child: FlutterLogo(
+                    size: 42,
+                  ),
+                ),
+              ),
+            ),
+            ExpansionTile(
+              title: const Text("Expansion Title"),
+              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+              expandedAlignment: Alignment.centerLeft,
+              childrenPadding: const EdgeInsets.only(left: 15),
+              children:  <Widget>[
+                Text("children 1"),
+                Text("children 2"),
+              ],
+            )
+          ],
+        ),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.blue,
       ),
     );
   }
