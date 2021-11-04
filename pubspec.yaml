@@ -39,6 +39,7 @@ dependencies:
   get: ^4.3.8
   flutter_svg: ^0.23.0+1
   avatars: ^2.0.0
+  syncfusion_flutter_calendar: ^19.3.48
 
 dev_dependencies:
   flutter_test:

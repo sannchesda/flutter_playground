@@ -1,9 +1,10 @@
 import 'package:avatars/avatars.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/calendar_app.dart';
 import 'package:get/get.dart';
 import 'package:particles_flutter/particles_flutter.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const CalendarApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -149,9 +150,27 @@ class _NavigationDrawerTestState extends State<NavigationDrawerTest> {
           ],
         ),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text("testing to get officer card * 12 mn ago"),
+              subtitle: Text("កាតមន្ត្រី"),
+              leading: Icon(Icons.three_k_plus,color: Colors.red,),
+              trailing: Icon(Icons.three_mp_outlined,color: Colors.green,),
+            ),
+            ListTile(
+              title: Text("testing to get officer card * 12 mn ago"),
+              subtitle: Text("កាតមន្ត្រី"),
+              leading: Icon(Icons.three_k_plus,color: Colors.red,),
+              trailing: Icon(Icons.three_mp_outlined,color: Colors.green,),
+
+            ),
+
+          ],
+        ),
       ),
     );
   }
