@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_playground/company_colors.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 // void main() {
@@ -11,7 +15,33 @@ class CalendarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Calendar Demo', home: MyHomePage());
+    return GetMaterialApp(
+        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
+        supportedLocales: [Locale('en'), Locale('km')],
+        theme: ThemeData(
+          // fontFamily: 'KhmerOSBattambang',
+            primarySwatch: CompanyColors.blue,
+            textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: CompanyColors.blue,
+                displayColor: Colors.red,
+            ),
+            iconTheme: Theme.of(context).iconTheme.copyWith(
+              color: hexToColor("#ef7c00"),
+            ),
+            // backgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              textTheme: Theme.of(context).textTheme.apply(
+                  bodyColor: Colors.white,
+
+                   // GoogleFonts.lato()
+              ),
+              iconTheme: IconThemeData(
+                color: Colors.white, //change your color here
+              ),
+            )
+        ),
+        title: 'Calendar Demo',
+        home: MyHomePage());
   }
 }
 
@@ -28,18 +58,39 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // key: UniqueKey(),
         body: SafeArea(
-          child: SfCalendar(
-            view: CalendarView.month,
-            dataSource: MeetingDataSource(_getDataSource()),
-            monthViewSettings: const MonthViewSettings(
-                appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
-            ),
-            allowedViews: [
-
-            ],
-          ),
-        ));
+      child: SfCalendar(
+        key: UniqueKey(),
+        view: CalendarView.month,
+        dataSource: MeetingDataSource(_getDataSource()),
+        monthViewSettings: const MonthViewSettings(
+          appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
+          showAgenda: false,
+        ),
+        allowedViews: [
+          CalendarView.day,
+          CalendarView.month,
+          CalendarView.schedule,
+        ],
+        showNavigationArrow: true,
+        showDatePickerButton: true,
+        showCurrentTimeIndicator: true,
+        onTap: (calendarTapDetails) {
+          print(calendarTapDetails.appointments);
+          showDatePicker(
+              firstDate: DateTime.now(),
+              lastDate: DateTime.now(),
+              context: context,
+              initialDate: DateTime.now(),
+              // fieldLabelText: "asdasd",
+              // fieldHintText: "fieldHintText",
+              // cancelText: "myCancel",
+              // helpText: "myASdasd",
+              locale: Locale("km"));
+        },
+      ),
+    ));
   }
 
   List<Meeting> _getDataSource() {
@@ -120,4 +171,9 @@ class Meeting {
 
   /// IsAllDay which is equivalent to isAllDay property of [Appointment].
   bool isAllDay;
+
+  @override
+  String toString() {
+    return 'Meeting{eventName: $eventName, from: $from, to: $to, background: $background, isAllDay: $isAllDay}';
+  }
 }

@@ -1,10 +1,21 @@
+import 'dart:io';
+
 import 'package:avatars/avatars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/calendar_app.dart';
+import 'package:flutter_playground/company_colors.dart';
+import 'package:flutter_playground/expandable_fab.dart';
+import 'package:flutter_playground/web_view.dart';
 import 'package:get/get.dart';
 import 'package:particles_flutter/particles_flutter.dart';
+import 'package:webview_flutter/platform_interface.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+import 'datepicker.dart';
 
 void main() => runApp(const CalendarApp());
+// void main() => runApp(const MyApp());
+// void main()=>runApp(const DatePickerExample());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,10 +25,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      // home: const CircularParticleScreen(),
-      home: const NavigationDrawerTest(),
+      home: const CircularParticleScreen(),
+      // home: const NavigationDrawerTest(),
       // home: const HttpRequestPage(),
       // home: const AutoGenerateUserImage(),
+      // home:const RunHtmlOnFlutter(title: 'Example HTML',),
     );
   }
 }
@@ -172,51 +184,49 @@ class _NavigationDrawerTestState extends State<NavigationDrawerTest> {
           ],
         ),
       ),
+      floatingActionButton: ExpandableFab(
+        distance: 112.0,
+        children: [
+          ActionButton(
+            onPressed: () {}/*=> _showAction(context, 0)*/,
+            icon: const Icon(Icons.format_size),
+          ),
+          ActionButton(
+            onPressed: () {}/*=> _showAction(context, 1)*/,
+            icon: const Icon(Icons.insert_photo),
+          ),
+          ActionButton(
+            onPressed: () {}/*=> _showAction(context, 2)*/,
+            icon: const Icon(Icons.videocam),
+          ),
+        ],
+      ),
     );
   }
 }
 
-class CircularParticleScreen extends StatelessWidget {
+class CircularParticleScreen extends StatefulWidget {
   const CircularParticleScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
-          key: UniqueKey(),
-          child: Center(
-            child: CircularParticle(
-              key: UniqueKey(),
-              //How much spread
-              awayRadius: 80,
-              numberOfParticles: 200,
-              speedOfParticles: 1,
-              height: screenHeight,
-              width: screenWidth,
-              onTapAnimation: true,
-              particleColor: Colors.white.withAlpha(150),
-              awayAnimationDuration: const Duration(milliseconds: 600),
-              maxParticleSize: 8,
-              isRandSize: true,
-              isRandomColor: true,
-              randColorList: [
-                Colors.red.withAlpha(210),
-                Colors.white.withAlpha(210),
-                Colors.yellow.withAlpha(210),
-                Colors.green.withAlpha(210)
-              ],
-              awayAnimationCurve: Curves.linear,
-              enableHover: false,
-              hoverColor: Colors.white,
-              hoverRadius: 90,
+  State<CircularParticleScreen> createState() => _CircularParticleScreenState();
+}
 
-              //Connect each dot
-              connectDots: true, //not recommended
-            ),
+class _CircularParticleScreenState extends State<CircularParticleScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Enable hybrid composition.
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          child: WebView(
+            initialUrl: "https://vincentgarreau.com/particles.js/#default",
+            javascriptMode: JavascriptMode.unrestricted,
           ),
         ),
       ),
