@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_playground/company_colors.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 // void main() {
@@ -19,27 +18,24 @@ class CalendarApp extends StatelessWidget {
         localizationsDelegates: [GlobalMaterialLocalizations.delegate],
         supportedLocales: [Locale('en'), Locale('km')],
         theme: ThemeData(
-          // fontFamily: 'KhmerOSBattambang',
+            // fontFamily: 'KhmerOSBattambang',
             primarySwatch: CompanyColors.blue,
             textTheme: Theme.of(context).textTheme.apply(
-                bodyColor: CompanyColors.blue,
-                displayColor: Colors.red,
-            ),
+                  bodyColor: CompanyColors.blue,
+                  displayColor: Colors.red,
+                ),
             iconTheme: Theme.of(context).iconTheme.copyWith(
-              color: hexToColor("#ef7c00"),
-            ),
+                  color: hexToColor("#ef7c00"),
+                ),
             // backgroundColor: Colors.white,
             appBarTheme: AppBarTheme(
               textTheme: Theme.of(context).textTheme.apply(
-                  bodyColor: Colors.white,
-
-                   // GoogleFonts.lato()
-              ),
+                    bodyColor: Colors.white,
+                  ),
               iconTheme: IconThemeData(
                 color: Colors.white, //change your color here
               ),
-            )
-        ),
+            )),
         title: 'Calendar Demo',
         home: MyHomePage());
   }

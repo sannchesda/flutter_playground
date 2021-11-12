@@ -46,6 +46,10 @@ dependencies:
   flutter_html: ^2.1.5
   syncfusion_flutter_datepicker: ^19.3.48
   google_fonts: ^2.1.0
+  show_up_animation: ^2.0.0
+  animations: ^2.0.2
+  cupertino_back_gesture: ^0.1.0
+  swipeable_page_route: ^0.2.4
 
 dev_dependencies:
   flutter_test:

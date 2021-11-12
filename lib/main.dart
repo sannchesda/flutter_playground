@@ -2,20 +2,16 @@ import 'dart:io';
 
 import 'package:avatars/avatars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/calendar_app.dart';
-import 'package:flutter_playground/company_colors.dart';
 import 'package:flutter_playground/expandable_fab.dart';
-import 'package:flutter_playground/web_view.dart';
+import 'package:flutter_playground/intranet/intranet.dart';
 import 'package:get/get.dart';
-import 'package:particles_flutter/particles_flutter.dart';
 import 'package:webview_flutter/platform_interface.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'datepicker.dart';
-
-void main() => runApp(const CalendarApp());
+// void main() => runApp(const CalendarApp());
 // void main() => runApp(const MyApp());
 // void main()=>runApp(const DatePickerExample());
+void main()=>runApp(const Intranet());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
