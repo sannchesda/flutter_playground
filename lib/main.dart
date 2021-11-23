@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const CircularParticleScreen(),
-      // home: const NavigationDrawerTest(),
+      // home: const CircularParticleScreen(),
+      home: const NavigationDrawerTest(),
       // home: const HttpRequestPage(),
       // home: const AutoGenerateUserImage(),
       // home:const RunHtmlOnFlutter(title: 'Example HTML',),

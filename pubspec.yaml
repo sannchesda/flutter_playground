@@ -50,6 +50,7 @@ dependencies:
   animations: ^2.0.2
   cupertino_back_gesture: ^0.1.0
   swipeable_page_route: ^0.2.4
+  scroll_to_index: ^2.1.0
 
 dev_dependencies:
   flutter_test:

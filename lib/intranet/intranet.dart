@@ -12,7 +12,6 @@ class Intranet extends StatelessWidget {
       title: 'Intranet Test',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: HomePage(),
-
     );
   }
 }
