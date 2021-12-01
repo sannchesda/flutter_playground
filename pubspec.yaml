@@ -51,6 +51,8 @@ dependencies:
   cupertino_back_gesture: ^0.1.0
   swipeable_page_route: ^0.2.4
   scroll_to_index: ^2.1.0
+  super_tooltip: ^1.0.1
+  syncfusion_localizations: ^19.3.56
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +75,52 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: Battambang
+      fonts:
+        - asset: assets/fonts/Battambang-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Battambang-Regular.ttf
+          weight: 400
+    - family: Moul
+      fonts:
+        - asset: assets/fonts/Moul-Regular.ttf
+    - family: KhmerOSBattambang
+      fonts:
+        - asset: assets/fonts/KhmerOS_battambang.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: KohSantepheap
+      fonts:
+        - asset: assets/fonts/KohSantepheap-Black.ttf
+        - asset: assets/fonts/KohSantepheap-Bold.ttf
+        - asset: assets/fonts/KohSantepheap-Light.ttf
+        - asset: assets/fonts/KohSantepheap-Regular.ttf
+        - asset: assets/fonts/KohSantepheap-Thin.ttf
+    - family: CustomIcon
+      fonts:
+        - asset: assets/fonts/id_icon.ttf
 
+  assets:
+    - assets/images/mptc_logo.png
+    - assets/images/sim_history.png
+    - assets/images/swap_sim.png
+    - assets/images/app_logo2.png
+    - assets/images/khmer_flag.jpg
+    - assets/images/english_flag.jpg
+    - assets/images/cellcard.png
+    - assets/images/cooltel.png
+    - assets/images/metfone.png
+    - assets/images/qb.jpg
+    - assets/images/seatel.jpg
+    - assets/images/smart.jpg
+    - assets/images/success.png
+    - assets/images/fail.png
+    - assets/images/nointernet.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
