@@ -85,16 +85,16 @@ void showSingleChoiceAlertDialog(
         },
   );
   AlertDialog alert = AlertDialog(
-    title: Text("${title ?? "noInternetTitle".tr}"),
-    content: Text("${"noInternetSubtitle".tr}"),
+    title: Text(title ?? "noInternetTitle".tr),
+    content: Text("noInternetSubtitle".tr),
     actions: [
       okButton,
     ],
   );
 
   CupertinoAlertDialog cupertinoAlert = CupertinoAlertDialog(
-    title: Text("${title ?? "noInternetTitle".tr}"),
-    content: Text("${"noInternetSubtitle".tr}"),
+    title: Text(title ?? "noInternetTitle".tr),
+    content: Text("noInternetSubtitle".tr),
     actions: [
       okButton,
     ],

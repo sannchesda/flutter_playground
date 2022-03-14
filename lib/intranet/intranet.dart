@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/company_colors.dart';
 import 'package:flutter_playground/intranet/home_page.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class Intranet extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Intranet Test',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: CompanyColors.blue),
       home: HomePage(),
     );
   }

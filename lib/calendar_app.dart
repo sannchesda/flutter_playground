@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_playground/company_colors.dart';
+import 'package:flutter_playground/intranet/alert_dialog.dart';
 import 'package:get/get.dart';
+import 'package:super_tooltip/super_tooltip.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
 // void main() {
 //   return runApp(CalendarApp());
@@ -15,10 +18,15 @@ class CalendarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          SfGlobalLocalizations.delegate
+        ],
         supportedLocales: [Locale('en'), Locale('km')],
+        locale: const Locale('km'),
         theme: ThemeData(
-            // fontFamily: 'KhmerOSBattambang',
+            fontFamily: 'KhmerOSBattambang',
             primarySwatch: CompanyColors.blue,
             textTheme: Theme.of(context).textTheme.apply(
                   bodyColor: CompanyColors.blue,
@@ -51,42 +59,110 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final tooltipKey = GlobalKey<State<Tooltip>>();
+
+  bool isShow = false;
+
+  CalendarView calendarView = CalendarView.month;
+  final calendarCon = CalendarController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // key: UniqueKey(),
-        body: SafeArea(
-      child: SfCalendar(
-        key: UniqueKey(),
-        view: CalendarView.month,
-        dataSource: MeetingDataSource(_getDataSource()),
-        monthViewSettings: const MonthViewSettings(
-          appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
-          showAgenda: false,
+        appBar: AppBar(
+          title: Text("Something"),
         ),
-        allowedViews: [
-          CalendarView.day,
-          CalendarView.month,
-          CalendarView.schedule,
-        ],
-        showNavigationArrow: true,
-        showDatePickerButton: true,
-        showCurrentTimeIndicator: true,
-        onTap: (calendarTapDetails) {
-          print(calendarTapDetails.appointments);
-          showDatePicker(
-              firstDate: DateTime.now(),
-              lastDate: DateTime.now(),
-              context: context,
-              initialDate: DateTime.now(),
-              // fieldLabelText: "asdasd",
-              // fieldHintText: "fieldHintText",
-              // cancelText: "myCancel",
-              // helpText: "myASdasd",
-              locale: Locale("km"));
-        },
-      ),
-    ));
+        body: SafeArea(
+          child: SfCalendar(
+            key: UniqueKey(),
+            view: calendarView,
+            todayTextStyle: TextStyle(
+              color: CompanyColors.yellow,
+              fontFamily: 'KhmerOSBattambang',
+              // fontSize: 11
+            ),
+            controller: calendarCon,
+            viewHeaderStyle: ViewHeaderStyle(
+              dayTextStyle: TextStyle(
+                  color: Colors.black, fontFamily: 'KhmerOSBattambang'),
+              dateTextStyle: TextStyle(fontFamily: 'KhmerOSBattambang'),
+            ),
+            headerStyle: CalendarHeaderStyle(
+              textStyle: TextStyle(
+                fontFamily: 'KhmerOSBattambang',
+                fontSize: 18,
+              ),
+            ),
+
+            // weekNumberStyle: WeekNumberStyle(
+            //   textStyle: TextStyle(
+            //     color: Colors.deepOrange
+            //   )
+            // ),
+            dataSource: MeetingDataSource(_getDataSource()),
+            monthViewSettings: MonthViewSettings(
+              appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
+              showAgenda: false,
+              agendaViewHeight: 150,
+            ),
+
+            appointmentBuilder: (context, calendarAppointmentDetails) {
+              List<Meeting> meetings =
+                  calendarAppointmentDetails.appointments.toList().cast();
+              return Container(
+                color: CompanyColors.blue,
+                padding: EdgeInsets.only(left: 2),
+                child: Text(
+                  meetings[0].eventName,
+                  style: TextStyle(
+                    fontFamily: 'KhmerOSBattambang',
+                    fontSize: 10,
+                    height: 1.5,
+                    color: Colors.white,
+                    // backgroundColor: Colors.red
+                  ),
+                ),
+              );
+            },
+            allowedViews: [
+              CalendarView.day,
+              CalendarView.week,
+              CalendarView.month,
+            ],
+
+            showNavigationArrow: true,
+            showDatePickerButton: true,
+            onTap: (calendarTapDetails) {
+              print(calendarTapDetails.appointments);
+              List<Meeting> meetings =
+                  calendarTapDetails.appointments!.toList().cast();
+
+              // Widget okButton = TextButton(
+              //   child: Text("Ok".tr),
+              //   onPressed: () {
+              //     Get.back();
+              //   },
+              // );
+              // AlertDialog alert = AlertDialog(
+              //   title: Text("${meetings[0].eventName}"),
+              //   actions: [
+              //     okButton,
+              //   ],
+              // );
+              // showDialog(
+              //   context: context,
+              //   builder: (BuildContext context) {
+              //     return alert;
+              //   },
+              // );
+            },
+          ),
+        ));
+  }
+
+  void onTap(CalendarTapDetails calendarTapDetails) {
+    final dynamic tooltip = tooltipKey.currentState;
+    tooltip?.ensureTooltipVisible();
   }
 
   List<Meeting> _getDataSource() {
