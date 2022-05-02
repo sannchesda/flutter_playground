@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/company_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-
-// void main() {
-//   return runApp(MyApp());
-// }
 
 /// My app class to display the date range picker
 class DatePickerExample extends StatefulWidget {
@@ -38,8 +33,6 @@ class DatePickerExampleState extends State<DatePickerExample> {
     /// [List<PickerDateRange] when the widget [SfDateRangeSelectionMode] set as
     /// multi range.
 
-
-
     setState(() {
       if (args.value is PickerDateRange) {
         _range =
@@ -50,7 +43,6 @@ class DatePickerExampleState extends State<DatePickerExample> {
                     .toString();
         _selectedDate = args.value.toString();
         _dateCount = _range.length.toString();
-
       } else if (args.value is DateTime) {
         _selectedDate = args.value.toString();
       } else if (args.value is List<DateTime>) {

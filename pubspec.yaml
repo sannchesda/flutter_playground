@@ -40,7 +40,7 @@ dependencies:
   http: ^0.13.4
   get: ^4.3.8
   flutter_svg: ^0.23.0+1
-  avatars: ^2.0.0
+  avatars: ^3.0.2
   syncfusion_flutter_calendar: ^19.3.48
   webview_flutter: ^2.3.0
   flutter_html: ^2.1.5
@@ -53,7 +53,7 @@ dependencies:
   scroll_to_index: ^2.1.0
   super_tooltip: ^1.0.1
   syncfusion_localizations: ^19.3.56
-  flutter_quill: ^2.0.23
+  flutter_quill: ^4.0.9
 
 dev_dependencies:
   flutter_test:

@@ -138,7 +138,7 @@ const htmlData = r"""
       <h3>Custom image render (flutter.dev)</h3>
       <img src='https://flutter.dev/images/flutter-mono-81x100.png' />
       <h3>No image source</h3>
-      <img alt='No source' />
+      <img alt='No source'  src=""/>
       <img alt='Empty source' src='' />
       <h3>Broken network image</h3>
       <img alt='Broken image' src='https://www.notgoogle.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' />
@@ -250,7 +250,6 @@ class _RunHtmlOnFlutterState extends State<RunHtmlOnFlutter> {
       body: SingleChildScrollView(
         child: Html(
           data: htmlData,
-
         ),
       ),
     );

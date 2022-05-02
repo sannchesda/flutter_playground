@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/company_colors.dart';
+import 'package:flutter_playground/utils/company_colors.dart';
 import 'package:flutter_playground/intranet/home_page.dart';
 import 'package:get/get.dart';
 

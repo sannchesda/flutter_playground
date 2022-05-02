@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_playground/company_colors.dart';
-import 'package:flutter_playground/intranet/alert_dialog.dart';
+import 'package:flutter_playground/utils/company_colors.dart';
 import 'package:get/get.dart';
-import 'package:super_tooltip/super_tooltip.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
-
-// void main() {
-//   return runApp(CalendarApp());
-// }
 
 /// The app which hosts the home page which contains the calendar on it.
 class CalendarApp extends StatelessWidget {
@@ -26,24 +20,25 @@ class CalendarApp extends StatelessWidget {
         supportedLocales: [Locale('en'), Locale('km')],
         locale: const Locale('km'),
         theme: ThemeData(
-            fontFamily: 'KhmerOSBattambang',
-            primarySwatch: CompanyColors.blue,
-            textTheme: Theme.of(context).textTheme.apply(
-                  bodyColor: CompanyColors.blue,
-                  displayColor: Colors.red,
-                ),
-            iconTheme: Theme.of(context).iconTheme.copyWith(
-                  color: hexToColor("#ef7c00"),
-                ),
-            // backgroundColor: Colors.white,
-            appBarTheme: AppBarTheme(
-              textTheme: Theme.of(context).textTheme.apply(
-                    bodyColor: Colors.white,
-                  ),
-              iconTheme: IconThemeData(
-                color: Colors.white, //change your color here
+          fontFamily: 'KhmerOSBattambang',
+          primarySwatch: CompanyColors.blue,
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: CompanyColors.blue,
+                displayColor: Colors.red,
               ),
-            )),
+          iconTheme: Theme.of(context).iconTheme.copyWith(
+                color: hexToColor("#ef7c00"),
+              ),
+          // backgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            textTheme: Theme.of(context).textTheme.apply(
+                  bodyColor: Colors.white,
+                ),
+            iconTheme: IconThemeData(
+              color: Colors.white, //change your color here
+            ),
+          ),
+        ),
         title: 'Calendar Demo',
         home: MyHomePage());
   }

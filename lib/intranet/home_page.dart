@@ -1,19 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/rendering/sliver_persistent_header.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_playground/company_colors.dart';
-import 'package:flutter_playground/constant.dart';
+import 'package:flutter_playground/utils/company_colors.dart';
+import 'package:flutter_playground/utils/constant.dart';
 import 'package:flutter_playground/intranet/particle_js_clone.dart';
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'dart:math' as math;
-
-import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -80,70 +77,48 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(controller: scrollController, slivers: [
-        SliverAppBar(
-          title: Text("Intranet Portal"),
-          backwardsCompatibility: false,
-          systemOverlayStyle: SystemUiOverlayStyle(
+      body: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          SliverAppBar(
+            title: Text("Intranet Portal"),
+            systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.light),
-          // expandedHeight: 150.0,
-          // flexibleSpace: FlexibleSpaceBar(
-          //   title: Text('Intranet Portal'),
-          //   background: CircularParticleWidget(),
-          //   collapseMode: CollapseMode.pin,
-          // ),
-          actions: [],
-          floating: true,
-          pinned: false,
-        ),
-
-        SliverToBoxAdapter(
-          child: Container(
-            color: CompanyColors.skyBlue,
-            child: CircularParticleWidget(),
+              statusBarIconBrightness: Brightness.light,
+            ),
+            actions: [],
+            floating: true,
+            pinned: false,
           ),
-        ),
-        SliverAnimatedList(
-          initialItemCount: stringList.length,
-          key: listKey,
-          itemBuilder: (context, index, animation) {
-            return SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(-1, 0),
-                end: Offset(0, 0),
-              ).animate(animation),
-              child: ListTile(
-                // onTap: () {
-                //   insertItem(index);
-                // },
-                onLongPress: () {
-                  removeItem(index);
-                },
-                title: Text(stringList[index]),
-              ),
-            );
-          },
-        ),
-
-        // SliverList(
-        //   delegate: SliverChildBuilderDelegate(
-        //     (_, int index) {
-        //       // return _getRow(index, math.max(data[1].toDouble(), 50.0));
-        //       return ListTile(
-        //         leading: Container(
-        //             padding: EdgeInsets.all(8),
-        //             width: 100,
-        //             child: _getRow(index)),
-        //         title: Tooltip(
-        //             message: 'Asdadsa',
-        //             child: Text('Place ${index + 1}', textScaleFactor: 2)),
-        //       );
-        //     },
-        //     childCount: maxCount,
-        //   ),
-        // ),
-      ]),
+          SliverToBoxAdapter(
+            child: Container(
+              color: CompanyColors.skyBlue,
+              child: CircularParticleWidget(),
+            ),
+          ),
+          SliverAnimatedList(
+            initialItemCount: stringList.length,
+            key: listKey,
+            itemBuilder: (context, index, animation) {
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(-1, 0),
+                  end: Offset(0, 0),
+                ).animate(animation),
+                child: ListTile(
+                  // onTap: () {
+                  //   insertItem(index);
+                  // },
+                  onLongPress: () {
+                    removeItem(index);
+                  },
+                  title: Text(stringList[index]),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
       drawer: Drawer(
         child: Container(
           color: CompanyColors.blue,
@@ -356,10 +331,19 @@ class _FiltersPageState extends State<FiltersPage>
 
   @override
   void initState() {
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
-    slideAnimation = Tween<Offset>(begin: Offset(0.0, -4.0), end: Offset.zero)
-        .animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 450),
+    );
+    slideAnimation = Tween<Offset>(
+      begin: Offset(0.0, -4.0),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.decelerate,
+      ),
+    );
     controller.addListener(() {
       setState(() {});
     });
@@ -382,7 +366,6 @@ class _FiltersPageState extends State<FiltersPage>
             height: MediaQuery.of(context).size.height / 2.7,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(color: CompanyColors.blue),
-            // color: CompanyColors.blue,
             child: Column(
               children: [
                 ListTile(

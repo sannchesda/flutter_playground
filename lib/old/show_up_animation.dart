@@ -1,9 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/calendar_app.dart';
 import 'package:show_up_animation/show_up_animation.dart';
-
-void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final String title = "Show up Demo";
@@ -62,20 +59,21 @@ class _MyHomePageState extends State<MyHomePage> {
               openBuilder: (context, _) => TestSecondPage(),
               closedElevation: 0,
               closedShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32),
-                  side: BorderSide(color: Colors.white, width: 1)),
+                borderRadius: BorderRadius.circular(32),
+                side: BorderSide(color: Colors.white, width: 1),
+              ),
               closedColor: Colors.blue,
               closedBuilder: (context, _) => Container(
                 alignment: Alignment.center,
-                // width: width * 0.8,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Text(
                     "Sign Up",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),

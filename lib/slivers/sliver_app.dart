@@ -1,24 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_playground/CallingNativeCode.dart';
-import 'package:flutter_playground/utils/company_colors.dart';
+import 'package:flutter_playground/slivers/sliver_page.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-void main() => runApp(const MyApp());
+import '../utils/company_colors.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({
+class SliverApp extends StatelessWidget {
+  const SliverApp({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Playground',
+      title: 'Flutter Demo',
       localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
+        ...GlobalMaterialLocalizations.delegates,
         GlobalWidgetsLocalizations.delegate,
         SfGlobalLocalizations.delegate
       ],
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
         const Locale('en'),
       ],
       locale: const Locale('km'),
-      home: const CallingNativeCode(),
+      home: const SliverPage(),
       theme: ThemeData(
         primarySwatch: CompanyColors.blue,
         fontFamily: 'KhmerOSBattambong',
