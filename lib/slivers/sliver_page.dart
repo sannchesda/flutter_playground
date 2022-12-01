@@ -14,7 +14,7 @@ class _SliverPageState extends State<SliverPage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: MediaQuery.of(context).size.height * 0.4,
+            expandedHeight: MediaQuery.of(context).size.height * 0.3,
             backgroundColor: const Color(0xff1c0436),
             pinned: true,
             floating: true,
@@ -29,6 +29,7 @@ class _SliverPageState extends State<SliverPage> {
                       'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4bb82b72535211.5bead62fe26d5.jpg'),
                   //your image
                   fit: BoxFit.cover,
+                  alignment: Alignment.center
                 ),
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(50),
@@ -74,35 +75,35 @@ class _SliverPageState extends State<SliverPage> {
     // return Scaffold(
     //   body: CustomScrollView(
     //     slivers: [
-    //       // SliverAppBar(
-    //       //   pinned: true,
-    //       //   stretch: true,
-    //       //   expandedHeight: 200,
-    //       //   flexibleSpace: FlexibleSpaceBar(
-    //       //     title: Text("Sliver App Bar"),
-    //       //     collapseMode: CollapseMode.parallax,
-    //       //     expandedTitleScale: 1.5,
-    //       //     stretchModes: [
-    //       //       // StretchMode.zoomBackground,
-    //       //       StretchMode.fadeTitle
-    //       //     ],
-    //       //     background: Image.network(
-    //       //       'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',
-    //       //       fit: BoxFit.cover,
-    //       //     ),
-    //       //   ),
-    //       // ),
-    //       SliverPersistentHeader(
+    //       SliverAppBar(
     //         pinned: true,
-    //         delegate: SliverCustomHeaderDelegate(
-    //           collapsedHeight: AppBar().preferredSize.height,
-    //           expandedHeight: 200,
-    //           paddingTop: 0,
-    //           coverImgUrl:
-    //               "http://img1.mukewang.com/5c18cf540001ac8206000338.jpg",
-    //           title: "Something",
+    //         stretch: true,
+    //         expandedHeight: 200,
+    //         flexibleSpace: FlexibleSpaceBar(
+    //           title: Text("Sliver App Bar"),
+    //           collapseMode: CollapseMode.parallax,
+    //           expandedTitleScale: 1.5,
+    //           stretchModes: [
+    //             // StretchMode.zoomBackground,
+    //             StretchMode.fadeTitle
+    //           ],
+    //           background: Image.network(
+    //             'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',
+    //             fit: BoxFit.cover,
+    //           ),
     //         ),
     //       ),
+    //       // SliverPersistentHeader(
+    //       //   pinned: true,
+    //       //   delegate: SliverCustomHeaderDelegate(
+    //       //     collapsedHeight: AppBar().preferredSize.height,
+    //       //     expandedHeight: 200,
+    //       //     paddingTop: 0,
+    //       //     coverImgUrl:
+    //       //         "http://img1.mukewang.com/5c18cf540001ac8206000338.jpg",
+    //       //     title: "Something",
+    //       //   ),
+    //       // ),
     //       SliverFillRemaining(
     //         child: ListView.builder(
     //           shrinkWrap: true,

@@ -39,12 +39,12 @@ dependencies:
   particles_flutter: ^0.1.4
   http: ^0.13.4
   get: ^4.3.8
-  flutter_svg: ^0.23.0+1
+  flutter_svg: ^1.0.3
   avatars: ^3.0.2
-  syncfusion_flutter_calendar: ^19.3.48
-  webview_flutter: ^2.3.0
-  flutter_html: ^2.1.5
-  syncfusion_flutter_datepicker: ^19.3.48
+  syncfusion_flutter_calendar: ^20.1.51
+  webview_flutter: ^3.0.2
+  flutter_html: ^3.0.0-alpha.3
+  syncfusion_flutter_datepicker: ^20.1.51
   google_fonts: ^2.1.0
   show_up_animation: ^2.0.0
   animations: ^2.0.2
@@ -52,8 +52,14 @@ dependencies:
   swipeable_page_route: ^0.2.4
   scroll_to_index: ^2.1.0
   super_tooltip: ^1.0.1
-  syncfusion_localizations: ^19.3.56
+  syncfusion_localizations: ^20.1.51
   flutter_quill: ^4.0.9
+  video_editor: ^1.4.3
+#  ffmpeg_kit_flutter: ^4.5.1
+  tapioca: ^1.0.6+1
+  helpers: ^1.1.4
+  crypto: ^3.0.2
+  encrypt: ^5.0.1
 
 dev_dependencies:
   flutter_test:

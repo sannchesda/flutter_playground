@@ -1,12 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_playground/CallingNativeCode.dart';
+import 'package:flutter_playground/crypto/TestingCrypto.dart';
+import 'package:flutter_playground/eMeeting/home_page.dart';
+import 'package:flutter_playground/slivers/sliver_app.dart';
 import 'package:flutter_playground/utils/company_colors.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 
-void main() => runApp(const MyApp());
+// void main() => runApp(const MyApp());
+// void main() => runApp(const Intranet());
+
+void main() => runApp(const SliverApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
         const Locale('en'),
       ],
       locale: const Locale('km'),
-      home: const CallingNativeCode(),
+      home: const EMeetingHomePage(),
       theme: ThemeData(
         primarySwatch: CompanyColors.blue,
         fontFamily: 'KhmerOSBattambong',
@@ -44,3 +48,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

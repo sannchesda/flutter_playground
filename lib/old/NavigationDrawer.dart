@@ -19,157 +19,163 @@ class _NavigationDrawerTestState extends State<NavigationDrawerTest> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "ស្នើសុំសេវា",
-          style: TextStyle(fontFamily: 'KhmerOSBattambang'),
-        ),
-        actions: [
-          IconButton(
+    return RefreshIndicator(
+      onRefresh: () async {},
+      triggerMode: RefreshIndicatorTriggerMode.anywhere,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "ស្នើសុំសេវា",
+            style: TextStyle(fontFamily: 'KhmerOSBattambang'),
+          ),
+          actions: [
+            IconButton(
               onPressed: () {
                 Get.dialog(
                   FiltersPage(),
                 );
               },
-              icon: Icon(Icons.filter_1)),
-          IconButton(
-            onPressed: () {
-              final now = DateTime.now();
-              showDateRangePicker(
-                context: context,
-                firstDate: DateTime(1900),
-                lastDate: now,
-                locale: Get.locale,
-                // builder: (context, child) {
-                //   return child!;
-                // },
-              );
-            },
-            icon: Icon(Icons.date_range),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            const DrawerHeader(
-              padding: EdgeInsets.all(0),
-              child: UserAccountsDrawerHeader(
-                accountName: Text("Account Name"),
-                accountEmail: Text("Email"),
-                currentAccountPicture: CircleAvatar(
-                  child: FlutterLogo(
-                    size: 42,
-                  ),
-                ),
-              ),
+              icon: Icon(Icons.filter_1),
             ),
-            ExpansionTile(
-              title: const Text("Expansion Title"),
-              expandedCrossAxisAlignment: CrossAxisAlignment.start,
-              expandedAlignment: Alignment.centerLeft,
-              childrenPadding: const EdgeInsets.only(left: 15),
-              children: <Widget>[
-                Text("children 1"),
-                Text("children 2"),
-              ],
-            )
+            IconButton(
+              onPressed: () {
+                final now = DateTime.now();
+                showDateRangePicker(
+                  context: context,
+                  firstDate: DateTime(1900),
+                  lastDate: now,
+                  locale: Get.locale,
+                  // builder: (context, child) {
+                  //   return child!;
+                  // },
+                );
+              },
+              icon: Icon(Icons.date_range),
+            ),
           ],
         ),
-      ),
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: ListView(
-          children: [
-            CupertinoSlidingSegmentedControl<String>(
-              children: <String, Widget>{
-                "All": Text("All"),
-                "ចំណេះដឹងទូទៅ": Text("ចំណេះដឹងទូទៅ"),
-                "ចំណេះដឹងព័ត៌មានវិទ្យា": Text(
-                  "ចំណេះដឹងព័ត៌មានវិទ្យា",
-                  textAlign: TextAlign.center,
-                ),
-                "ចំណេះដឹងហិរញ្ញវត្ថុ": Container(
-                  child: Text(
-                    "ចំណេះដឹងហិរញ្ញវត្ថុ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'KohSantepheap', fontSize: 16),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                padding: EdgeInsets.all(0),
+                child: UserAccountsDrawerHeader(
+                  accountName: Text("Account Name"),
+                  accountEmail: Text("Email"),
+                  arrowColor: Colors.white,
+                  currentAccountPicture: CircleAvatar(
+                    child: FlutterLogo(
+                      size: 45,
+                    ),
                   ),
-                  padding: EdgeInsets.all(10),
                 ),
-              },
-              padding: EdgeInsets.all(10),
-              onValueChanged: (value) {
-                if (value == null) {
-                  return;
-                }
-                setState(() {
-                  _selectedValue = value;
-                });
-              },
-              backgroundColor: CupertinoColors.white,
-              thumbColor: CupertinoColors.white,
-              groupValue: _selectedValue,
-            ),
-            ListTile(
-              title: Text("testing to get officer card"),
-              subtitle: Text("កាតមន្ត្រី • 12 mn ago"),
-              leading: Icon(
-                Icons.low_priority,
-                color: Colors.red,
               ),
-              trailing: Icon(
-                Icons.three_mp_outlined,
-                color: Colors.green,
+              ExpansionTile(
+                title: const Text("Expansion Title"),
+                expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                expandedAlignment: Alignment.centerLeft,
+                childrenPadding: const EdgeInsets.only(left: 15),
+                children: <Widget>[
+                  Text("children 1"),
+                  Text("children 2"),
+                ],
+              )
+            ],
+          ),
+        ),
+        body: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: ListView(
+            children: [
+              CupertinoSlidingSegmentedControl<String>(
+                children: <String, Widget>{
+                  "All": Text("All"),
+                  "ចំណេះដឹងទូទៅ": Text("ចំណេះដឹងទូទៅ"),
+                  "ចំណេះដឹងព័ត៌មានវិទ្យា": Text(
+                    "ចំណេះដឹងព័ត៌មានវិទ្យា",
+                    textAlign: TextAlign.center,
+                  ),
+                  "ចំណេះដឹងហិរញ្ញវត្ថុ": Container(
+                    child: Text(
+                      "ចំណេះដឹងហិរញ្ញវត្ថុ",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontFamily: 'KohSantepheap', fontSize: 16),
+                    ),
+                    padding: EdgeInsets.all(10),
+                  ),
+                },
+                padding: EdgeInsets.all(10),
+                onValueChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    _selectedValue = value;
+                  });
+                },
+                backgroundColor: CupertinoColors.white,
+                thumbColor: CupertinoColors.white,
+                groupValue: _selectedValue,
               ),
-            ),
-            ListTile(
-              title: Text("testing to get officer card * 12 mn ago"),
-              subtitle: Text("កាតមន្ត្រី"),
-              leading: Icon(
-                Icons.three_k_plus,
-                color: Colors.red,
+              ListTile(
+                title: Text("testing to get officer card"),
+                subtitle: Text("កាតមន្ត្រី • 12 mn ago"),
+                leading: Icon(
+                  Icons.low_priority,
+                  color: Colors.red,
+                ),
+                trailing: Icon(
+                  Icons.three_mp_outlined,
+                  color: Colors.green,
+                ),
               ),
-              trailing: Icon(
-                Icons.three_mp_outlined,
-                color: Colors.green,
+              ListTile(
+                title: Text("testing to get officer card * 12 mn ago"),
+                subtitle: Text("កាតមន្ត្រី"),
+                leading: Icon(
+                  Icons.three_k_plus,
+                  color: Colors.red,
+                ),
+                trailing: Icon(
+                  Icons.three_mp_outlined,
+                  color: Colors.green,
+                ),
               ),
-            ),
-            quill.QuillToolbar.basic(
-              controller: _controller,
-              showListCheck: false,
-              showCodeBlock: false,
-              showInlineCode: false,
-              showVideoButton: false,
-              showDividers: true,
-              showBoldButton: true,
-              showItalicButton: true,
-              showSmallButton: false,
-              showUnderLineButton: true,
-              showStrikeThrough: false,
-              showColorButton: false,
-              showBackgroundColorButton: false,
-              showClearFormat: false,
-              showAlignmentButtons: true,
-              showLeftAlignment: true,
-              showCenterAlignment: true,
-              showRightAlignment: true,
-              showJustifyAlignment: false,
-              showHeaderStyle: true,
-              showListNumbers: true,
-              showListBullets: true,
-              showQuote: true,
-              showIndent: false,
-              showLink: true,
-              // showHistory: false,
-              // showHorizontalRule: false,
-              multiRowsDisplay: true,
-              showImageButton: true,
-              showCameraButton: true,
-            ),
-            quill.QuillEditor(
+              quill.QuillToolbar.basic(
+                controller: _controller,
+                showListCheck: false,
+                showCodeBlock: false,
+                showInlineCode: false,
+                showVideoButton: false,
+                showDividers: true,
+                showBoldButton: true,
+                showItalicButton: true,
+                showSmallButton: false,
+                showUnderLineButton: true,
+                showStrikeThrough: false,
+                showColorButton: false,
+                showBackgroundColorButton: false,
+                showClearFormat: false,
+                showAlignmentButtons: true,
+                showLeftAlignment: true,
+                showCenterAlignment: true,
+                showRightAlignment: true,
+                showJustifyAlignment: false,
+                showHeaderStyle: true,
+                showListNumbers: true,
+                showListBullets: true,
+                showQuote: true,
+                showIndent: false,
+                showLink: true,
+                // showHistory: false,
+                // showHorizontalRule: false,
+                multiRowsDisplay: true,
+                showImageButton: true,
+                showCameraButton: true,
+              ),
+              quill.QuillEditor(
                 controller: _controller,
                 scrollController: ScrollController(),
                 scrollable: true,
@@ -191,31 +197,33 @@ class _NavigationDrawerTestState extends State<NavigationDrawerTest> {
                       const Tuple2(0, 0),
                       null),
                   sizeSmall: const TextStyle(fontSize: 9),
-                )),
-          ],
+                ),
+              ),
+            ],
+          ),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
+        // ExpandableFab(
+        //   distance: 112.0,
+        //   children: [
+        //     ActionButton(
+        //       onPressed: () {} /*=> _showAction(context, 0)*/,
+        //       icon: const Icon(Icons.format_size),
+        //     ),
+        //     ActionButton(
+        //       onPressed: () {} /*=> _showAction(context, 1)*/,
+        //       icon: const Icon(Icons.insert_photo),
+        //     ),
+        //     ActionButton(
+        //       onPressed: () {} /*=> _showAction(context, 2)*/,
+        //       icon: const Icon(Icons.videocam),
+        //     ),
+        //   ],
+        // ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
-      // ExpandableFab(
-      //   distance: 112.0,
-      //   children: [
-      //     ActionButton(
-      //       onPressed: () {} /*=> _showAction(context, 0)*/,
-      //       icon: const Icon(Icons.format_size),
-      //     ),
-      //     ActionButton(
-      //       onPressed: () {} /*=> _showAction(context, 1)*/,
-      //       icon: const Icon(Icons.insert_photo),
-      //     ),
-      //     ActionButton(
-      //       onPressed: () {} /*=> _showAction(context, 2)*/,
-      //       icon: const Icon(Icons.videocam),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

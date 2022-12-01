@@ -36,7 +36,7 @@ class MainActivity : FlutterActivity() {
             flutterEngine.dartExecutor.binaryMessenger,
             TOAST_CHANNEL
         ).setMethodCallHandler { call, result ->
-            val argument = call.arguments() as Map<String, String>;
+            val argument = call.arguments as Map<String, String>;
             val message = argument["message"];
             if (call.method == "showToast") {
                 print(result);

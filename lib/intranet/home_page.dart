@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback(_onLayoutDone);
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
 
     controller = AutoScrollController(
         viewportBoundaryGetter: () =>
@@ -142,9 +142,10 @@ class _HomePageState extends State<HomePage>
                       child: Text(
                         "Flutter Step-by-Step",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w500),
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],
@@ -225,8 +226,9 @@ class _HomePageState extends State<HomePage>
                                     title: Text(
                                       "Request Service1",
                                       style: TextStyle(
-                                          color: CompanyColors.blue,
-                                          fontFamily: 'KhmerOSBattambang'),
+                                        color: CompanyColors.blue,
+                                        fontFamily: 'KhmerOSBattambang',
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -276,10 +278,12 @@ class _HomePageState extends State<HomePage>
         position: Tween<Offset>(
           begin: const Offset(-1, 0),
           end: Offset(0, 0),
-        ).animate(CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeInBack,
-            reverseCurve: Curves.easeInExpo)),
+        ).animate(
+          CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInBack,
+              reverseCurve: Curves.easeInExpo),
+        ),
         child: ListTile(
           // onTap: () {
           //   insertItem(index);
